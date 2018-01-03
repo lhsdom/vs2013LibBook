@@ -1,0 +1,76 @@
+﻿
+<!DOCTYPE html>
+@using Model
+@using Common
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台预约信息显示界面</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <link href="~/css/table1_h.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //初始化高度
+            $("#div1").height($(window).height());
+            //当文档窗口发生改变时 触发
+            $(window).resize(function () {
+                $("#div1").height($(window).height());
+            })
+        })
+        $(function () {
+            $("#deletes").click(function () {
+                var id = $(this).attr("name");
+                var tr = $(this).parents(".tr");
+                alert(id);
+                $.post("/GetBookMsg/DeleteBookMsg", {
+                    id:id
+                }, function (data) {
+                    if (data == "ok") {
+                        alert("删除成功");
+                        tr.remove();
+                    }
+                    else {
+                        alert("删除失败");
+                    }
+                })
+            })
+        })
+</script>
+</head>
+<body>
+    <div class="tab">
+        @if (ViewData["list"] != null)
+{
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>序号</th>
+            <th>用户名</th>
+            <th>房间号</th>
+            <th>座位号</th>
+            <th>时间</th>
+            <th>操作</th>
+        </tr>
+        @foreach (BookMsg bookMsg in (List<BookMsg>)ViewData["list"])
+        {
+            <tr class="tr">
+                <td class ="td" id="id">@bookMsg.Id</td>
+                <td class="td">@bookMsg.UserName</td>
+                <td class="td">@bookMsg.RoomNum</td>
+                <td class="td">@bookMsg.TableNum</td>
+                <td class="td">@bookMsg.BookTime</td>
+                <td class="td"><a href="#" id="deletes" name="@bookMsg.Id">删除</a></td>
+            </tr>
+        }
+    </table>
+      <p>
+             @MvcHtmlString.Create( PageBar.GetPageBar((int)ViewData["pageIndex"],(int)ViewData["pageCount"]))
+       </p>
+}
+
+
+    </div>
+</body>
+</html>

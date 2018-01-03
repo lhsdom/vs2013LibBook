@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理界面</title>
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/time.js"></script>
+    <script src="~/Scripts/index_h.js"></script>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.bootcss.com/toastr.js/2.1.4/toastr.min.js"></script>
+    <link href="https://cdn.bootcss.com/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">
+</head>
+<body>
+    <!--顶部log-->
+    <div class="container">
+        <nav class="navbar navbar-default container">
+            <div class="row log">
+                <div class="col-lg-4">
+                    <a href="#">
+                        <img alt="图片丢失" src="../image/log.jpg">
+                    </a>
+                </div>
+                <div class="col-lg-4">
+                    <a href="#">
+                        <img alt="图片丢失" src="../image/kjyy.png">
+                    </a>
+                </div>
+                <div class="col-lg-4">
+                    <p><span id="current-time">2017/12/22 下午6:30:30</span></p>
+                    <p><span>可预约座位数1000</span></p>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!--左侧功能导航-->
+    <div class="container col-lg-1 col-lg-offset-2">
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" class="active" id="li1"><a href="#">预约<br />信息</a></li>
+            <li role="presentation" id="li2"><a href="#">统计<br />信息</a></li>
+            <li role="presentation" id="li3"><a href="#">导出<br />信息</a></li>
+            <li role="presentation" id="li4"><a href="#">退出<br />系统</a></li>
+        </ul>
+    </div>
+    <!--信息显示-->
+    <div class="container col-lg-6" style="height: 500px;border: solid darkgrey">
+        <!--信息栏-->
+        <div style="border: solid darkblue;height:86%">
+            <!--使用内联框架加载后台预约信息显示界面-->
+            <!--<iframe src="table1_h.html" width="100%" height="100%" scrolling="no"></iframe>-->
+            <iframe src="/GetBookMsg/Msg" width="100%" height="100%" scrolling="no"></iframe>
+        </div>
+        <!--分页按钮-->
+        <div class="col-lg-12" style="border: solid darkkhaki;height:14%">
+            <nav aria-label="Page navigation" style="margin:0 auto;text-align:center">
+  
+            </nav>
+        </div>
+    </div>
+</body>
+</html>

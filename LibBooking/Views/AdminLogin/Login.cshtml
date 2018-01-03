@@ -1,0 +1,88 @@
+﻿@model Model.Admin
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员登录</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/time.js"></script>
+</head>
+<body background="~/Content/themes/base/images/bj1.jpg">
+    <!--顶部-->
+    <div class="container">
+        <nav class="navbar navbar-default container">
+            <div class="row log">
+                <div class="col-lg-4">
+                    <a href="#">
+                        <img alt="Brand" src="~/Content/themes/base/images/log.jpg">
+                    </a>
+                </div>
+                <div class="col-lg-4">
+                    <a href="#">
+                        <img alt="Brand" src="~/Content/themes/base/images/kjyy.png">
+                    </a>
+                </div>
+                <div class="col-lg-4">
+                    <p><span id="current-time">2017/12/22 下午6:30:30</span></p>
+                    <p><span>可预约座位数1000</span></p>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!--中部-->
+    <div class="container">
+        <!--中部1，空div调整位置-->
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6 middle">
+            <form action="/AdminLogin/AdminLogin" method="post">
+                <div class="form-group">
+                    <div class="col-lg-offset-2">
+                        <label for="inputID">管理员：</label>
+                        <input type="text" class="form-control" name="adminName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-2">
+                        <label for="inputPssword">密码：</label>
+                        <input type="text" class="form-control" name="adminPwd">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-2">
+                        <label for=" ">验证码：</label>
+                        <input type="text" class="form-control" id=" ">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-5">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox">记住管理员和密码
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-5">
+                        <button type="reset" class="btn btn-default">重置</button>
+                        <button type="submit" class="btn btn-default">登录</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+    <!--底部-->
+    <div class="container text-center col-lg-8 col-lg-offset-2">
+        <address>
+            <strong>&#169;文华学院</strong><br>
+            湖北省，武汉市，洪山区<br>
+            关山街道，文园路8号
+            <abbr title="联系电话">Tel:027-87599065</abbr>
+            <p>技术支持：<a href="">引航团队</a></p>
+        </address>
+    </div>
+</body>
+</html></html>
