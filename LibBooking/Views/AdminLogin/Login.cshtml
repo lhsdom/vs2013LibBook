@@ -1,13 +1,52 @@
-﻿@model Model.Admin
-<!DOCTYPE html>
+﻿ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>管理员登录</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/time.js"></script>
+    <title>管理员登录</title>  
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/js/jquery-2.1.4.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/time.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#Login").click(function () {
+                var adminName = $("#adminName").val();
+                var adminPwd = $("#adminPwd").val();
+                var code = $("#code").val();
+                $.ajax({
+                    url: "/AdminLogin/AdminLogin",
+                    type: "post",
+                    data: {
+                        adminName: adminName,
+                        adminPwd: adminPwd,
+                        code:code,
+                    },
+                    success: function (data) {
+                        if (data == "null") {
+                            alert("用户名和密码不能为空");
+                        }
+                        if (data == "false") {
+                            alert("登录失败");
+                        }
+                        if (data == "ture") {
+                            window.location.href = "/GetBookMsg/Index";
+                        }
+                        if (data == "past") {
+                            alert("验证码过期");
+                        }
+                        if (data == "out") {
+                            alert("验证码错误");
+                        }
+                    }
+                })
+            });
+        });
+    </script>
+    <style>
+        input.form-control {
+            width: 78%;
+        }
+    </style>
 </head>
 <body background="~/Content/themes/base/images/bj1.jpg">
     <!--顶部-->
@@ -16,12 +55,12 @@
             <div class="row log">
                 <div class="col-lg-4">
                     <a href="#">
-                        <img alt="Brand" src="~/Content/themes/base/images/log.jpg">
+                        <img alt="图片丢失" src="~/Content/themes/base/images/log.jpg" />
                     </a>
                 </div>
                 <div class="col-lg-4">
                     <a href="#">
-                        <img alt="Brand" src="~/Content/themes/base/images/kjyy.png">
+                        <img alt="图片丢失" src="~/Content/themes/base/images/kjyy.png" />
                     </a>
                 </div>
                 <div class="col-lg-4">
@@ -35,42 +74,47 @@
     <div class="container">
         <!--中部1，空div调整位置-->
         <div class="col-lg-3"></div>
+        <div id="showInfo"></div>
         <div class="col-lg-6 middle">
-            <form action="/AdminLogin/AdminLogin" method="post">
-                <div class="form-group">
-                    <div class="col-lg-offset-2">
-                        <label for="inputID">管理员：</label>
-                        <input type="text" class="form-control" name="adminName">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-lg-offset-2">
-                        <label for="inputPssword">密码：</label>
-                        <input type="text" class="form-control" name="adminPwd">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-lg-offset-2">
-                        <label for=" ">验证码：</label>
-                        <input type="text" class="form-control" id=" ">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-lg-offset-5">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox">记住管理员和密码
-                            </label>
+            <fieldset>
+                <legend style="text-align: center">管理员登录</legend>
+                <form action="" method="post">
+                    <div class="form-group">
+                        <div class="col-lg-offset-3">
+                            <label for="inputID">管理员：</label>
+                            <input type="text" class="form-control" id="adminName">
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-lg-offset-5">
-                        <button type="reset" class="btn btn-default">重置</button>
-                        <button type="submit" class="btn btn-default">登录</button>
+                    <div class="form-group">
+                        <div class="col-lg-offset-3">
+                            <label for="inputPassword">密码：</label>
+                            <input type="text" class="form-control" id="adminPwd">
+                        </div>
                     </div>
-                </div>
-            </form>
+                    <div class="form-group">
+                        <div class="col-lg-offset-3">
+                            <label for=" ">验证码：</label>
+                            <img src="/AdminLogin/Code"><span><a>看不清</a></span>
+                            <input type="text" class="form-control" id="code">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-5">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox">记住管理员和密码
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-5">
+                            <button type="reset" class="btn btn-default">重置</button>
+                            <button type="button" class="btn btn-default" id="Login">登录</button>
+                        </div>
+                    </div>
+                </form>
+            </fieldset>
         </div>
         <div class="col-lg-3"></div>
     </div>
@@ -81,8 +125,8 @@
             湖北省，武汉市，洪山区<br>
             关山街道，文园路8号
             <abbr title="联系电话">Tel:027-87599065</abbr>
-            <p>技术支持：<a href="">引航团队</a></p>
+            <p>技术支持：<a href="">引航工作室</a></p>
         </address>
     </div>
 </body>
-</html></html>
+</html>

@@ -46,5 +46,30 @@ namespace LibBookBLL
         {
             return bookMsgDal.DeleteMsg(id);
         }
+
+        /// <summary>
+        /// 获取时间段里的人数
+        /// </summary>
+        /// <param name="startTime">开始时间</param>
+        /// <param name="endTime">结束时间</param>
+        /// <returns></returns>
+        public int selectMsg(DateTime startTime,DateTime endTime)
+        {
+            int msgCount = bookMsgDal.selectMsg(startTime, endTime);
+            return msgCount;
+        }
+
+        /// <summary>
+        /// 添加预定信息
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="roomNum"></param>
+        /// <param name="tableNum"></param>
+        /// <param name="bookTime"></param>
+        /// <returns></returns>
+        public int AddMsg(string userName,int roomNum,int tableNum,DateTime bookTime,DateTime startTime,DateTime endTime)
+        {
+            return bookMsgDal.AddMsg(userName, roomNum, tableNum, bookTime,startTime,endTime);
+        }
     }
 }

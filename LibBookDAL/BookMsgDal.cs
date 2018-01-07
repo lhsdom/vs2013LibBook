@@ -51,6 +51,8 @@ namespace LibBookDAL
             bookMsg.TableNum = Convert.ToInt32(row["TableNum"]);
             bookMsg.UserName = row["UserName"] != DBNull.Value ? row["UserName"].ToString() : string.Empty;
             bookMsg.BookTime = Convert.ToDateTime(row["BookTime"]);
+            bookMsg.StartTime = Convert.ToDateTime(row["StartTime"]);
+            bookMsg.EndTime = Convert.ToDateTime(row["EndTime"]);
         }
 
         /// <summary>
@@ -75,6 +77,44 @@ namespace LibBookDAL
                                     new SqlParameter("@id",id),
                                 };
             return SqlHelp.ExecuteNonquery(sql, CommandType.Text, pars);
+        }
+
+        /// <summary>
+        /// 通过时间段来查询数据总数
+        /// </summary>
+        /// <param name="startTime">开始时间</param>
+        /// <param name="endTime">结束时间</param>
+        /// <returns></returns>
+        public int selectMsg(DateTime startTime,DateTime endTime)
+        {
+            string sql = "select count(*) from BookMsg where BookTime between @startTime and @endTime";
+            SqlParameter[] pars ={
+                                    new SqlParameter("@startTime",startTime),
+                                    new SqlParameter("@endTime",endTime),
+                                };
+            return Convert.ToInt32(SqlHelp.ExecuteScalare(sql,CommandType.Text,pars));
+        }
+
+        /// <summary>
+        /// 添加预定信息
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="roomNum"></param>
+        /// <param name="tableNum"></param>
+        /// <param name="bookTime"></param>
+        /// <returns></returns>
+        public int AddMsg(string userName,int roomNum,int tableNum,DateTime bookTime,DateTime startTime,DateTime endTime)
+        {
+            string sql = "insert int BookMsg values(@userName,@roomNum,@tableNum,@bookTime,@starTime,@endTime)";
+            SqlParameter[] pars ={
+                                     new SqlParameter("@userName",userName),
+                                     new SqlParameter("@roomNum",roomNum),
+                                     new SqlParameter("@tableNum",tableNum),
+                                     new SqlParameter("@bookTime",bookTime),
+                                     new SqlParameter("@starTime",startTime),
+                                     new SqlParameter("@endTime",endTime),
+                                };
+            return SqlHelp.ExecuteNonquery(sql,CommandType.Text,pars);
         }
     }
 }

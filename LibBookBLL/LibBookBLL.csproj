@@ -42,6 +42,7 @@
     <Compile Include="AdminSerevce.cs" />
     <Compile Include="BookMsgBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StuInofBll.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LibBookDAL\LibBookDAL.csproj">

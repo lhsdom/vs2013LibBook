@@ -3,16 +3,16 @@
 * 2.更改加载得URL，使显示页面转换
 */
 $(document).ready(function () {
-    $("#table").load("table1_h.html");
+    $("#table").load("/GetBookMsg/Msg");
     var l=null;
     $('ul.nav > li').click(function () {
         $('ul.nav > li').removeClass('active');
         $(this).addClass('active');
         l=$(this).attr('id');
         if (l=='li2'){
-            $("#table").load("table2_h.html");
+            $("#table").load("/GetBookMsg/Msg");
         }else if (l=='li1'){
-            $("#table").load("table1_h.html");
+            $("#table").load("/GetBookMsg/Msg");
         }else if(l=='li4'){
             toastr.options = {
                 "closeButton": true,

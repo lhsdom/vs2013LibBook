@@ -126,8 +126,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AddBookMsgController.cs" />
     <Compile Include="Controllers\AdminLoginController.cs" />
     <Compile Include="Controllers\GetBookMsgController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -139,6 +141,9 @@
     <Content Include="Content\themes\base\images\bj3.jpg" />
     <Content Include="Content\themes\base\images\kjyy.png" />
     <Content Include="Content\themes\base\images\log.jpg" />
+    <Content Include="Content\themes\base\images\log2.jpg" />
+    <Content Include="Content\themes\base\images\log3.png" />
+    <Content Include="Content\themes\base\images\log5.jpg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -152,6 +157,9 @@
     <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\zw_bkx.gif" />
+    <Content Include="Content\themes\base\images\zw_kx.gif" />
+    <Content Include="Content\themes\base\images\zw_yx.gif" />
     <Content Include="Content\themes\base\jquery-ui.css" />
     <Content Include="Content\themes\base\jquery.ui.accordion.css" />
     <Content Include="Content\themes\base\jquery.ui.all.css" />
@@ -194,19 +202,23 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\index_h.css" />
+    <Content Include="css\index_q.css" />
     <Content Include="css\jquery-ui.min.css" />
-    <Content Include="css\login.css" />
+    <Content Include="css\jquery.seat-charts.css" />
+    <Content Include="css\login_q.css" />
     <Content Include="css\table1_h.css" />
-    <Content Include="css\table2h.css" />
+    <Content Include="css\table2_h.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\index_h.js" />
-    <Content Include="Scripts\jquery-2.1.4.min.js" />
-    <Content Include="Scripts\jquery-ui.min.js" />
-    <Content Include="Scripts\jquery.seat-charts.min.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\time.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\index_h.js" />
+    <Content Include="js\inedex_q.js" />
+    <Content Include="js\jquery-2.1.4.min.js" />
+    <Content Include="js\jquery-ui.min.js" />
+    <Content Include="js\jquery.seat-charts.min.js" />
+    <Content Include="js\seat.js" />
+    <Content Include="js\time.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -244,6 +256,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\GetBookMsg\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Student\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AddBookMsg\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

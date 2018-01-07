@@ -1,0 +1,141 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/js/jquery-2.1.4.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/time.js"></script>
+    <link href="~/css/login_q.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(function () {
+            $("#stuLogin").click(function () {
+                var stuNum = $("#stuNum").val();
+                var stuPwd = $("#stuPwd").val();
+                var code = $("#code").val();
+                $.ajax({
+                    url: "/Student/StuLogin",
+                    type: "post",
+                    data: {
+                        stuNum: stuNum,
+                        stuPwd: stuPwd,
+                        code:code,
+                    },
+                    success: function (data) {
+                        if (data == "ok") {
+                            alert("登录失败");
+                        }
+                        if (data == "no") {
+                            alert("用户名或密码为空");
+                        }
+                        if (data == "true") {
+                            location.href = "/AddBookMsg/Index";
+                        }
+                        if (data == "past") {
+                            alert("验证码过期");
+                        }
+                        if (data == "out") {
+                            alert("验证码错误");
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+
+</head>
+<body background=" ~/Content/themes/base/images/bj1.jpg">
+    <!--顶部-->
+    <div class="container">
+        <nav class="navbar navbar-default container">
+            <div class="row log">
+                <div class="col-lg-4">
+                    <a href="#">
+                        <img alt="图片丢失" src="~/Content/themes/base/images/log.jpg">
+                    </a>
+                </div>
+                <div class="col-lg-4">
+                    <a href="#">
+                        <img alt="图片丢失" src="~/Content/themes/base/images/kjyy.png">
+                    </a>
+                </div>
+                <div class="col-lg-4">
+                    <p><span id="current-time">2017/12/22 下午6:30:30</span></p>
+                    <p><span>可预约座位数1000</span></p>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!--中部-->
+    <div class="container">
+        <!--中部1，空div调整位置-->
+        <div class="col-lg-1"></div>
+        <div class="col-lg-5 middle">
+            <h3>欢迎使用图书馆空间预约系统</h3>
+            <span>选座系统使用注意事项：<br />1.微信预约方式：关注“文华图书馆”公众号，点击 我--座位预约：第一次输账号绑定后即可进行座位预约。<br />2.手机预约方式:下载APP后，登录前请先设置APP服务器：点击“服务器设置”，选择“根据网址访问服务器”，IOS版网址地址为： ，安卓版网址地址为： 。<br />3.网页预约方式:  预约地址:到达检索机上预约。<br />4.座位系统预约当日时间为01:00到23:30,当日预约次日时间为22:15-23:50。<br />5.读者使用学号或工号登录选座系统，密码与图书馆借书系统密码一致。有快速预约和自选座位两种方式。<br />6.预约完成后座位保留30分钟，请在规定时间内刷卡进馆即签到，如在规定时间内没有到馆也没有取消预约将会产生违约记录。<br />7.读者出馆刷通道机为暂离，超过暂离时间，系统将自动释放座位，记违约一次。暂离时间为30分钟,用餐暂离时间为60分钟(用餐时间段11点到13点,17点到19点)。<br />8.读者离开座位且不再使用时必须点击结束使用以释放座位,否则产生违约记录。<br />9.为了让读者熟悉座位预约系统使用流程及其规则，目前产生的违约记录暂不处理。<br />10. &nbsp;请勿使用程序脚本等非正常方式使用本系统，违规者可能会被自动封停。</span>
+        </div>
+        <div class="col-lg-5 middle">
+            <fieldset>
+                <legend>用户登录</legend>
+                <form action="" method="post">
+                    <div class="form-group">
+                        <div class="col-lg-offset-4">
+                            <span class="font1">你好，欢迎预约占座！</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-4">
+                            <label for="inputID">学号：</label>
+                            <input type="text" class="form-control" id="stuNum">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-4">
+                            <label for="inputPssword">密码：</label>
+                            <input type="text" class="form-control" id="stuPwd">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-4">
+                            <label for=" " class="center">验证码：</label><img src="/Student/Code"><span><a href="">看不清</a></span>
+                            <input type="text" class="form-control" id="code">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-5">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox">记住用户名和密码
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-5">
+                            <button type="reset" class="btn btn-default">重置</button>
+                            <input type="button" class="btn btn-default" value="登录" id="stuLogin">
+                        </div>
+                    </div>
+                </form>
+            </fieldset>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+    <!--底部-->
+    <div class="bottom container text-center col-lg-8 col-lg-offset-2">
+        <address>
+            <strong>&#169;文华学院</strong><br>
+            湖北省，武汉市，洪山区<br>
+            关山街道，文园路8号
+            <abbr title="联系电话">Tel:027-87599065</abbr>
+            <p>技术支持：<a href="">引航工作室</a></p>
+        </address>
+    </div>
+</body>
+</html>

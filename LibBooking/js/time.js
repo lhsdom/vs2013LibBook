@@ -3,4 +3,4 @@ setInterval(function() {
     var now = new Date();
     var nowString=now.toLocaleString();
     $('#current-time').text(nowString);
-}, 20);
+}, 59);

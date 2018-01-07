@@ -1,0 +1,7 @@
+.font1{font-size: 18px;font-weight: bold;color: #2b2b2b;height: 48px;line-height: 48px;padding: 0 0 10px 0;}
+/*为顶部导航图片添加圆角*/
+.log{border:5px solid #d9edf7;border-radius:6px 6px 6px 6px;}
+/*为中部信息div添加圆角设置高度*/
+.middle{background-color: whitesmoke;border:5px solid slategray;height: 580px;border-radius:6px 6px 6px 6px;}
+.middle span{font-family: "微软雅黑";font-size: 16px;}
+input.form-control{width: 68%;}

@@ -13,5 +13,7 @@ namespace Model
         public int RoomNum { get; set; }
         public int TableNum { get; set; }
         public DateTime BookTime { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
     }
 }

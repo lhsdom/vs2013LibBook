@@ -21,7 +21,7 @@ namespace LibBooking.Controllers
         public ActionResult Msg()
         {
             int pageIndex = Request["pageIndex"] != null ? int.Parse(Request["pageIndex"]) : 1;
-            int pageSize = 5;
+            int pageSize = 8;
             int pageCount = BookMsgBll.GetPageCount(pageSize);
             pageIndex = pageIndex < 1 ? 1 : pageIndex;
             pageIndex = pageIndex > pageCount ? pageCount : pageIndex;

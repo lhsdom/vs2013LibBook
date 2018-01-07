@@ -65,9 +65,10 @@
             </tr>
         }
     </table>
-      <p>
-             @MvcHtmlString.Create( PageBar.GetPageBar((int)ViewData["pageIndex"],(int)ViewData["pageCount"]))
-       </p>
+   <div>
+        @MvcHtmlString.Create(PageBar.GetPageBar((int)ViewData["pageIndex"], (int)ViewData["pageCount"]))
+       </div>
+
 }
 
 

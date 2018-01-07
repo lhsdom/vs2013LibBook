@@ -3,46 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using LibBookBLL;
 using Model;
+using LibBookBLL;
 using Common;
-using System.Text;
 
 namespace LibBooking.Controllers
 {
-    public class AdminLoginController : Controller
+    public class StudentController : Controller
     {
         //
-        // GET: /AdminLogin/
+        // GET: /Student/
 
-        public ActionResult Login()
+        public ActionResult Index()
         {
             return View();
         }
-        /// <summary>
-        /// 获取4位验证码
-        /// </summary>
-        /// <returns></returns>
+
         public ActionResult Code()
         {
             string strCode = new ValidateCode().CreateValidateCode(4);
             Session["code"] = strCode;
             return File(new ValidateCode().CreateValidateGraphic(strCode), "image/jpeg");
         }
-       
-        /// <summary>
-        /// 管理员登录
-        /// </summary>
-        /// <returns></returns>
-        [HttpPost]
-        public ActionResult AdminLogin(string adminName,string adminPwd,string code)
+
+
+        public ActionResult StuLogin(string stuNum,string stuPwd,string code)
         {
-            
             string code1 = string.Empty;
-            AdminSerevce adminSerevce = new AdminSerevce();
-            Admin da = adminSerevce.GetAdminInof(adminName, adminPwd);
-            string data = "";
-            if(Session["code"]!=null)
+            string data="";
+            StuInofBll stuInofBll = new StuInofBll();
+            if (Session["code"] != null)
             {
                 code1 = Session["code"].ToString();
             }
@@ -53,23 +43,24 @@ namespace LibBooking.Controllers
             }
             if (code == code1)
             {
-                if (adminName != "" && adminPwd != "")
+                if (stuNum != null && stuPwd != null)
                 {
-
-                    if (da != null)
+                    StuInof stuInof = stuInofBll.GetStuInof(stuNum, stuPwd);
+                    Session["stuInof"] = stuInof;
+                    if (stuInof != null)
                     {
-                        data = "ture";
+                        data = "true";
                         return Json(data);
                     }
                     else
                     {
-                        data = "false";
+                        data = "ok";
                         return Json(data);
                     }
                 }
                 else
                 {
-                    data = "null";
+                    data = "no";
                     return Json(data);
                 }
             }
@@ -79,5 +70,6 @@ namespace LibBooking.Controllers
                 return Json(data);
             }
         }
+
     }
 }
